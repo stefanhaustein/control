@@ -4,5 +4,5 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
-rootProject.name = "KotlinNativeTemplate"
+rootProject.name = "control"
+// rootProject.name = "KotlinNativeTemplate"

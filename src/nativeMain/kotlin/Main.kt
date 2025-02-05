@@ -1,21 +1,24 @@
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-
-@Serializable
-private data class Message(
-    val topic: String,
-    val content: String,
-)
-
-private val PrettyPrintJson = Json {
-    prettyPrint = true
-}
+import io.ktor.server.application.*
+import io.ktor.server.engine.*
+import io.ktor.server.cio.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 
 fun main() {
-    val message = Message(
-        topic = "Kotlin/Native",
-        content = "Hello!"
-    )
-    println(PrettyPrintJson.encodeToString(message))
+    embeddedServer(
+        factory = CIO,
+        module = Application::module,
+        configure = {
+            connector { port = 8080 }
+            reuseAddress = true
+        }
+    ).start(wait = true)
+}
+
+fun Application.module() {
+    routing {
+        get("/") {
+            call.respondText("Hello World!")
+        }
+    }
 }

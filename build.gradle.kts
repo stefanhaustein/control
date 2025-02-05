@@ -3,11 +3,14 @@ plugins {
     alias(libs.plugins.kotlinxSerialization)
 }
 
-group = "me.user"
+group = "org.kobjects.control"
 version = "1.0-SNAPSHOT"
+val ktor_version = "3.0.3"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
+
 }
 
 kotlin {
@@ -32,6 +35,13 @@ kotlin {
     }
 
     sourceSets {
+        val nativeMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-server-core:$ktor_version")
+                implementation("io.ktor:ktor-server-cio:$ktor_version")
+            }
+        }
+
         nativeMain.dependencies {
             implementation(libs.kotlinxSerializationJson)
         }
