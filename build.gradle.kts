@@ -39,6 +39,7 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-server-core:$ktor_version")
                 implementation("io.ktor:ktor-server-cio:$ktor_version")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.6.0")
             }
         }
 

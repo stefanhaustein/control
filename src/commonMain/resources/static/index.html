@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <title>Pi 1-2-3</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap');
+    </style>
+
+</head>
+<body style="width:100%; height:100%; border:0; padding:0; margin:0; display: flex;  flex-direction: column;">
+    <div style="display:flex; flex: none">
+        <input type="button" value="⟳" onclick="fetch(true);" style="width:72px" />
+        <input id="formulaInput" style="flex-grow: 1" list="functions">
+        <datalist id="functions"></datalist>
+        <select id="panelSelect" style="width:208px">
+            <option>About</option>
+            <option>Parameters</option>
+            <option>Graphics</option>
+        </select>
+    </div>
+    <div style="display:flex; flex-grow: 1; height: 0">
+        <div id="spreadsheetViewport" style="overflow: scroll; flex-grow: 1; height:100%" >
+            <table id="spreadsheetTable">
+                <thead><tr id="spreadsheetTHead"></tr></thead>
+            <tbody id="spreadsheetTBody"></tbody>
+            </table>
+        </div>
+        <div id="panel" >
+            <div id="AboutPanel" style="width:200px">
+                Pi 1-2-3
+            </div>
+            <div id="ParametersPanel" style="display: none; width:200px"></div>
+            <div id="GraphicsPanel" style="display: none; width:200px">
+                <table class="boxGraphics">
+                    <tr>
+                        <td><image src="img/line/br.svg" /></td>
+                        <td><image src="img/line/hb.svg" /></td>
+                        <td><image src="img/line/bl.svg" /></td>
+                    </tr><tr>
+                        <td><image src="img/line/vr.svg" /></td>
+                        <td><image src="img/line/hv.svg" /></td>
+                        <td><image src="img/line/vl.svg" /></td>
+                    </tr><tr>
+                        <td><image src="img/line/v.svg" /></td>
+                        <td><image src="img/line/h.svg" /></td>
+                        <td><image src="img/line/v.svg" /></td>
+                    </tr><tr>
+                        <td><image src="img/line/tr.svg" /></td>
+                        <td><image src="img/line/ht.svg" /></td>
+                        <td><image src="img/line/tl.svg" /></td>
+                    </tr>
+                </table>
+                <hr />
+                <image src="img/circuit/lamp.svg" width="72" heigh="36"/>
+            </div>
+        </div>
+    </div>
+    <dialog id="dialog">
+    </dialog>
+
+    <script type="module" src="js/shared_state.js"></script>
+    <script type="module" src="js/setup.js"></script>
+    <script type="module" src="js/formula_input_controller.js"></script>
+    <script type="module" src="js/table_controller.js"></script>
+    <script type="module" src="js/parameter_panel_controller.js"></script>
+    <script type="module" src="js/graphics_panel_controller.js"></script>
+    <script type="module" src="js/sync.js"></script>
+</body>
+</html>
